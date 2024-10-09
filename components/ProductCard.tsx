@@ -1,13 +1,19 @@
+// ProductCard.tsx
 import { Product } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
 
 interface Props {
   product: Product;
 }
- 
+
 const ProductCard = ({ product }: Props) => {
+  if (!product) {
+    // Handle the case where product is undefined
+    return <div>Error: Product not found</div>;
+  }
+
   return (
     <Link href={`/products/${product._id}`} className="product-card">
       <div className="product-card_img-container">
@@ -29,8 +35,8 @@ const ProductCard = ({ product }: Props) => {
           </p>
 
           <p className="text-black text-lg font-semibold">
-            <span>{product?.currency}</span>
-            <span>{product?.currentPrice}</span>
+            <span>{product.currency}</span>
+            <span>{product.currentPrice}</span>
           </p>
         </div>
       </div>
@@ -38,4 +44,4 @@ const ProductCard = ({ product }: Props) => {
   )
 }
 
-export default ProductCard
+export default ProductCard;

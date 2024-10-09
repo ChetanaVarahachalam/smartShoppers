@@ -58,6 +58,8 @@ export async function scrapeAmazonProduct(url: string) {
 
     const description = extractDescription($)
 
+    console.log({imageUrls});
+
     // Construct data object with scraped information
     const data = {
       url,
